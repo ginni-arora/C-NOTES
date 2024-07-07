@@ -1,0 +1,627 @@
+OPERATORS IN C++(arithmetic operators)
+
+operators are symbols that tell the compiler to perform specific operations.
+
+1 is ARITHMETIC OPERATORS 
+
+TWO TYPES OF ARITHMETIC OPERATORS 
+1. BINARY OPERATOR 
+2. UNARY OPERATOR 
+
+BINARY OPERATOR 
++,-,*,/,%
+
+UNARY OPERATOR 
+++,--
+
+++ OPERATOR 
+THIS IS CALLED INCREMENT OPERATOR 
+----->INCREMENT OPERATOR ALSO HAS TWO TYPES 
+--> PRE INCREMENTOR (++i)
+--> POST INCREMENTOR (i++)
+
+example 
+int a =10;
+int b;
+(pre-increment example)
+b=++a;
+(in pre-increment )
+(increment a instantly)
+cout<<a<<" "<<b<<endl;
+output a=11
+b=11; 
+
+example 
+int a =10;
+int b;
+(post-increment example)
+b=a++;
+(in post-increment )
+(The current value of a is preserved temporarily and will get incremented before the next statement is executed )
+cout<<a<<" "<<b<<endl;
+output a=11
+b=10; 
+
+example 1 
+the sum of pre-increment and post-increment
+code--->
+int main(){
+	int i=1;
+   i=i++ + ++i;
+   cout<<i<<endl;
+   return 0;
+}
+
+explain the code:-
+
+
+### Code Overview
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int i = 1;
+    i = i++ + ++i;
+    cout << i << endl;
+    return 0;
+}
+```
+
+### Step-by-Step Explanation
+
+1. **Include Header File**:
+    
+    #include<iostream>
+    ```
+    - This line includes the standard input-output stream library which is necessary for using `cout`.
+
+2. **Namespace Declaration**:
+    
+    using namespace std;
+    ```
+    - This allows us to use standard library names without the `std::` prefix.
+
+3. **Main Function**:
+    
+    int main() {
+    ```
+    - The `main` function is the entry point of the program.
+
+4. **Variable Declaration and Initialization**:
+    
+    int i = 1;
+    ```
+    - This declares an integer variable `i` and initializes it to 1.
+
+5. **Complex Expression**:
+    
+    i = i++ + ++i;
+    ```
+    - This is the most interesting part of the code. It involves both post-increment (`i++`) and pre-increment (`++i`) operators. Let's dissect it:
+    
+    - **Post-increment (`i++`)**:
+        - `i++` returns the current value of `i` (which is 1) and then increments `i` by 1. After this operation, `i` becomes 2.
+        
+    - **Pre-increment (`++i`)**:
+        - `++i` increments the current value of `i` (which is now 2) by 1, making it 3, and then returns this new value (3).
+        
+    - So, the expression can be broken down into:
+        - `i++` evaluates to 1 (then `i` becomes 2).
+        - `++i` evaluates to 3 (then `i` is 3).
+        
+    - Now, the expression looks like:
+        
+        i = 1 + 3;
+        
+    - Therefore, `i` is assigned the value 4.
+
+6. **Output the Result**:
+    ```cpp
+    cout << i << endl;
+    ```
+    - This prints the value of `i` to the console, which is 4.
+
+7. **Return Statement**:
+    
+    return 0;
+    
+    - This returns 0, indicating that the program ended successfully.
+
+### Detailed Breakdown of `i = i++ + ++i`
+
+1. The initial value of `i` is 1.
+2. Evaluate `i++`:
+    - Post-increment: `i++` returns 1 (original value), then `i` becomes 2.
+3. Evaluate `++i`:
+    - Pre-increment: `++i` increments `i` (2) to 3 and returns 3.
+4. Add the results of the two operations:
+    - `1 + 3 = 4`
+5. Assign the result to `i`:
+    - `i = 4`
+
+### Conclusion
+
+The code snippet uses a combination of post-increment and pre-increment operators to manipulate the value of `i`. The key point is understanding the order of operations and how these operators affect the value of `i`. The final value of `i` printed to the console is 4.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+2. example 
+Let's break down this code step by step to understand how it works and the values of the variables at each stage.
+
+### Code Overview
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main(){
+    int i = 1;
+    int j = 2;
+    int k;
+    k = i + j + i++ + j++ + ++i + ++j;
+    cout << i << " " << j << " " << k << endl;
+    return 0;
+}
+```
+
+### Step-by-Step Explanation
+
+1. **Include Header File**:
+    
+    #include<iostream>
+    
+    - This line includes the standard input-output stream library which is necessary for using `cout`.
+
+2. **Namespace Declaration**:
+    
+    using namespace std;
+    ```
+    - This allows us to use standard library names without the `std::` prefix.
+
+3. **Main Function**:
+    
+    int main() {
+    ```
+    - The `main` function is the entry point of the program.
+
+4. **Variable Declaration and Initialization**:
+    
+    int i = 1;
+    int j = 2;
+    int k;
+    ```
+    - Three integer variables `i`, `j`, and `k` are declared. `i` is initialized to 1, `j` is initialized to 2, and `k` is declared but not initialized.
+
+5. **Complex Expression**:
+    
+    k = i + j + i++ + j++ + ++i + ++j;
+    ```
+    - This line calculates the value of `k` using both post-increment (`i++`, `j++`) and pre-increment (`++i`, `++j`) operators. Let's dissect it step by step:
+
+    - **Initial Values**:
+        - `i = 1`
+        - `j = 2`
+
+    - **Breakdown of the Expression**:
+        - `i` (current value of `i`): 1
+        - `j` (current value of `j`): 2
+        - `i++` (post-increment: return current value and then increment): 1 (then `i` becomes 2)
+        - `j++` (post-increment: return current value and then increment): 2 (then `j` becomes 3)
+        - `++i` (pre-increment: increment and then return new value): 3 (since `i` was 2, now it becomes 3)
+        - `++j` (pre-increment: increment and then return new value): 4 (since `j` was 3, now it becomes 4)
+
+    - Summing these values:
+        
+        k = 1 + 2 + 1 + 2 + 3 + 4;
+        ```
+        - So, `k = 13`.
+
+    - **Final Values of Variables**:
+        - `i` becomes 3 after the post-increment and pre-increment operations.
+        - `j` becomes 4 after the post-increment and pre-increment operations.
+
+6. **Output the Result**:
+    
+    cout << i << " " << j << " " << k << endl;
+    ```
+    - This prints the final values of `i`, `j`, and `k` to the console: `3 4 13`.
+
+7. **Return Statement**:
+    
+    return 0;
+    ```
+    - This returns 0, indicating that the program ended successfully.
+
+### Detailed Breakdown of `k = i + j + i++ + j++ + ++i + ++j`
+
+1. Initial values:
+    - `i = 1`
+    - `j = 2`
+
+2. Evaluate components of the expression:
+    - `i` (current value of `i`): 1
+    - `j` (current value of `j`): 2
+    - `i++` (post-increment): returns 1, then `i` becomes 2
+    - `j++` (post-increment): returns 2, then `j` becomes 3
+    - `++i` (pre-increment): increments `i` to 3, then returns 3
+    - `++j` (pre-increment): increments `j` to 4, then returns 4
+
+3. Calculate the sum:
+    - `1 + 2 + 1 + 2 + 3 + 4 = 13`
+
+4. Assign the result to `k`:
+    - `k = 13`
+
+5. Final values:
+    - `i = 3`
+    - `j = 4`
+    - `k = 13`
+
+### Conclusion
+
+The code uses a mix of post-increment and pre-increment operators to modify and evaluate the values of `i` and `j` within a single complex expression. The final values of `i`, `j`, and `k` are printed to the console as `3 4 13`.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+NEXT EXAMPLE
+
+Certainly! Let's break down this code step by step to understand the values of the variables at each stage, especially focusing on the increments and decrements.
+
+### Code
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main(){
+    int i = 0;
+    i = i++ - --i + ++i - i--;
+    cout << i << endl;
+    return 0;
+}
+```
+
+### Explanation
+
+1. **Include Header File**:
+    ```cpp
+    #include<iostream>
+    ```
+    - This line includes the standard input-output stream library which is necessary for using `cout`.
+
+2. **Namespace Declaration**:
+    ```cpp
+    using namespace std;
+    ```
+    - This allows us to use standard library names without the `std::` prefix.
+
+3. **Main Function**:
+    ```cpp
+    int main() {
+    ```
+    - The `main` function is the entry point of the program.
+
+4. **Variable Declaration and Initialization**:
+    ```cpp
+    int i = 0;
+    ```
+    - This declares an integer variable `i` and initializes it to 0.
+
+5. **Complex Expression**:
+    ```cpp
+    i = i++ - --i + ++i - i--;
+    ```
+    - This line calculates the value of `i` using both post-increment (`i++`, `i--`) and pre-increment/decrement (`++i`, `--i`) operators. Let's dissect it step by step:
+
+    - **Initial Value**:
+        - `i = 0`
+
+    - **Breakdown of the Expression**:
+        - `i++` (post-increment: return current value and then increment): returns 0, then `i` becomes 1
+        - `--i` (pre-decrement: decrement and then return new value): decrements `i` to 0, then returns 0
+        - `++i` (pre-increment: increment and then return new value): increments `i` to 1, then returns 1
+        - `i--` (post-decrement: return current value and then decrement): returns 1, then `i` becomes 0
+
+    - Substituting these values back into the expression:
+        ```cpp
+        i = 0 - 0 + 1 - 1;
+        ```
+
+    - Perform the arithmetic operations:
+        ```cpp
+        i = 0 - 0 + 1 - 1;
+        i = 0;
+        ```
+
+    - So, `i` remains 0.
+
+6. **Output the Result**:
+    ```cpp
+    cout << i << endl;
+    ```
+    - This prints the final value of `i` to the console: `0`.
+
+7. **Return Statement**:
+    ```cpp
+    return 0;
+    ```
+    - This returns 0, indicating that the program ended successfully.
+
+### Detailed Breakdown of `i = i++ - --i + ++i - i--`
+
+1. Initial value:
+    - `i = 0`
+
+2. Evaluate components of the expression:
+    - `i++` (post-increment): returns 0, then `i` becomes 1
+    - `--i` (pre-decrement): decrements `i` to 0, then returns 0
+    - `++i` (pre-increment): increments `i` to 1, then returns 1
+    - `i--` (post-decrement): returns 1, then `i` becomes 0
+
+3. Substitute these values into the expression:
+    - `i = 0 - 0 + 1 - 1`
+
+4. Calculate the result:
+    - `i = 0 - 0 + 1 - 1 = 0`
+
+5. Final value:
+    - `i = 0`
+
+### Conclusion
+
+The code demonstrates the use of both post-increment and pre-increment/decrement operators within a single expression. Despite the various increments and decrements, the final value of `i` remains 0 due to the arithmetic operations performed. This example highlights the importance of understanding the order of evaluation and side effects of these operators in complex expressions.
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+NEXT EXAMPLE
+
+Certainly! Let's break down the code step by step to understand the values of the variables at each stage, focusing on the post-decrement operations.
+
+### Code
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main(){
+    int i = 1, j = 2, k = 3;
+    int m = i-- - j-- - k--;
+    cout << i << endl;
+    cout << j << endl;
+    cout << k << endl;
+    cout << m << endl;
+    return 0;
+}
+```
+
+### Explanation
+
+1. **Include Header File**:
+    ```cpp
+    #include<iostream>
+    ```
+    - This line includes the standard input-output stream library which is necessary for using `cout`.
+
+2. **Namespace Declaration**:
+    ```cpp
+    using namespace std;
+    ```
+    - This allows us to use standard library names without the `std::` prefix.
+
+3. **Main Function**:
+    ```cpp
+    int main() {
+    ```
+    - The `main` function is the entry point of the program.
+
+4. **Variable Declaration and Initialization**:
+    ```cpp
+    int i = 1, j = 2, k = 3;
+    ```
+    - This declares three integer variables `i`, `j`, and `k`, and initializes them to 1, 2, and 3 respectively.
+
+5. **Complex Expression**:
+    ```cpp
+    int m = i-- - j-- - k--;
+    ```
+    - This line calculates the value of `m` using post-decrement operators (`i--`, `j--`, `k--`). Let's dissect it step by step:
+
+    - **Initial Values**:
+        - `i = 1`
+        - `j = 2`
+        - `k = 3`
+
+    - **Breakdown of the Expression**:
+        - `i--` (post-decrement: return current value and then decrement): returns 1, then `i` becomes 0
+        - `j--` (post-decrement: return current value and then decrement): returns 2, then `j` becomes 1
+        - `k--` (post-decrement: return current value and then decrement): returns 3, then `k` becomes 2
+
+    - Substituting these values back into the expression:
+        ```cpp
+        m = 1 - 2 - 3;
+        ```
+
+    - Perform the arithmetic operations:
+        ```cpp
+        m = 1 - 2 - 3;
+        m = -1 - 3;
+        m = -4;
+        ```
+
+    - So, `m = -4`.
+
+6. **Output the Results**:
+    ```cpp
+    cout << i << endl; // prints the value of i
+    cout << j << endl; // prints the value of j
+    cout << k << endl; // prints the value of k
+    cout << m << endl; // prints the value of m
+    ```
+
+    - `i` is now 0 (after the post-decrement operation).
+    - `j` is now 1 (after the post-decrement operation).
+    - `k` is now 2 (after the post-decrement operation).
+    - `m` is -4 (result of the expression).
+
+7. **Return Statement**:
+    ```cpp
+    return 0;
+    ```
+    - This returns 0, indicating that the program ended successfully.
+
+### Detailed Breakdown of `m = i-- - j-- - k--`
+
+1. Initial values:
+    - `i = 1`
+    - `j = 2`
+    - `k = 3`
+
+2. Evaluate components of the expression:
+    - `i--` (post-decrement): returns 1, then `i` becomes 0
+    - `j--` (post-decrement): returns 2, then `j` becomes 1
+    - `k--` (post-decrement): returns 3, then `k` becomes 2
+
+3. Substitute these values into the expression:
+    - `m = 1 - 2 - 3`
+
+4. Calculate the result:
+    - `m = 1 - 2 - 3 = -4`
+
+5. Final values:
+    - `i = 0`
+    - `j = 1`
+    - `k = 2`
+    - `m = -4`
+
+### Conclusion
+
+The code demonstrates the use of post-decrement operators within a complex expression. Each variable (`i`, `j`, and `k`) is decremented after its current value is used in the expression to calculate `m`. The final values of `i`, `j`, `k`, and `m` are printed to the console as `0 1 2 -4`. This example highlights the importance of understanding the order of evaluation and side effects of post-decrement operators in complex expressions.
+//////////////////////////////////////////////////////////////////////////////////////////////
+THIRD EXAMPLE
+
+Let's reevaluate the detailed steps of how the expression `k = i-- - i++ + --j - ++j + --i - j-- + ++i - j++` works to ensure we understand why `k` results in `-20`.
+
+### Code
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main(){
+    int i = 10, j = 20, k;
+    k = i-- - i++ + --j - ++j + --i - j-- + ++i - j++;
+    cout << i << endl;
+    cout << j << endl;
+    cout << k << endl;
+    return 0;
+}
+```
+
+### Detailed Breakdown
+
+1. **Initial Values**:
+    - `i = 10`
+    - `j = 20`
+
+2. **Step-by-Step Evaluation of `k`**:
+    - `i--`: Returns 10, then `i` becomes 9
+    - `i++`: Returns 9, then `i` becomes 10
+    - `--j`: Decrements `j` to 19, then returns 19
+    - `++j`: Increments `j` to 20, then returns 20
+    - `--i`: Decrements `i` to 9, then returns 9
+    - `j--`: Returns 20, then `j` becomes 19
+    - `++i`: Increments `i` to 10, then returns 10
+    - `j++`: Returns 19, then `j` becomes 20
+
+3. **Substitute These Values Back into the Expression**:
+    ```cpp
+    k = 10 - 9 + 19 - 20 + 9 - 20 + 10 - 19;
+    ```
+
+4. **Perform the Arithmetic Operations**:
+    - Step-by-step:
+      ```cpp
+      k = 10 - 9; // 1
+      k = 1 + 19; // 20
+      k = 20 - 20; // 0
+      k = 0 + 9; // 9
+      k = 9 - 20; // -11
+      k = -11 + 10; // -1
+      k = -1 - 19; // -20
+      ```
+
+5. **Final Values**:
+    - `i = 10` (incremented and decremented back to original value)
+    - `j = 20` (incremented and decremented back to original value)
+    - `k = -20`
+
+### Explanation
+
+1. **First Operation: `i--`**:
+    - `i` is 10 before the decrement.
+    - `i--` evaluates to 10.
+    - `i` becomes 9 after the decrement.
+
+2. **Second Operation: `i++`**:
+    - `i` is 9 before the increment.
+    - `i++` evaluates to 9.
+    - `i` becomes 10 after the increment.
+
+3. **Third Operation: `--j`**:
+    - `j` is 20 before the decrement.
+    - `--j` decrements `j` to 19 and evaluates to 19.
+
+4. **Fourth Operation: `++j`**:
+    - `j` is 19 before the increment.
+    - `++j` increments `j` to 20 and evaluates to 20.
+
+5. **Fifth Operation: `--i`**:
+    - `i` is 10 before the decrement.
+    - `--i` decrements `i` to 9 and evaluates to 9.
+
+6. **Sixth Operation: `j--`**:
+    - `j` is 20 before the decrement.
+    - `j--` evaluates to 20.
+    - `j` becomes 19 after the decrement.
+
+7. **Seventh Operation: `++i`**:
+    - `i` is 9 before the increment.
+    - `++i` increments `i` to 10 and evaluates to 10.
+
+8. **Eighth Operation: `j++`**:
+    - `j` is 19 before the increment.
+    - `j++` evaluates to 19.
+    - `j` becomes 20 after the increment.
+
+9. **Final Evaluation of `k`**:
+    - Substitute the values:
+      ```cpp
+      k = 10 - 9 + 19 - 20 + 9 - 20 + 10 - 19;
+      ```
+    - Perform arithmetic operations step-by-step:
+      ```cpp
+      k = 10 - 9; // 1
+      k = 1 + 19; // 20
+      k = 20 - 20; // 0
+      k = 0 + 9; // 9
+      k = 9 - 20; // -11
+      k = -11 + 10; // -1
+      k = -1 - 19; // -20
+      ```
+
+### Conclusion
+
+The code uses a series of post-increment, pre-increment, post-decrement, and pre-decrement operations that affect the values of `i` and `j` during the calculation of `k`. The final value of `k` is `-20`. The printed values are:
+- `i = 10`
+- `j = 20`
+- `k = -20`
+
+
+
+ 
+
+
+
+ 
+
+
+
